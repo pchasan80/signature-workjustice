@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         jobTitle: document.getElementById('jobTitle'),
         email: document.getElementById('email'),
         phone: document.getElementById('phone'),
-        fax: document.getElementById('fax'),
-        photoUrl: document.getElementById('photoUrl')
+        fax: document.getElementById('fax')
     };
 
     // Static Data
@@ -60,18 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
             jobTitle: inputs.jobTitle.value || "Partner, President",
             email: inputs.email.value || "brent@workjustice.com",
             phone: inputs.phone.value || "(323) 675-3337",
-            fax: inputs.fax.value || "",
-            photoUrl: inputs.photoUrl.value
+            fax: inputs.fax.value || ""
         };
 
-        let photoHtml = '';
-        if (data.photoUrl) {
-            photoHtml = `
-                <td width="200" style="width: 200px; vertical-align: bottom;">
-                    <img src="${data.photoUrl}" alt="${data.fullName}" width="180" style="width: 180px; height: auto; border-radius: 4px; object-fit: cover;">
-                </td>
-            `;
-        }
+        const logoHtml = `
+            <td width="250" style="width: 250px; vertical-align: top; padding-right: 20px;">
+                <img src="${companyData.logoUrl}" alt="${companyData.name}" width="250" style="width: 100%; height: auto; border: 0;">
+            </td>
+        `;
 
         // Helper for contact rows
         const contactRow = (icon, text, href) => `
@@ -88,8 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const signatureHtml = `
             <table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px; font-family: 'Montserrat', Arial, sans-serif; font-size: 14px; line-height: 1.4; color: ${companyData.colors.text};">
                 <tr>
-                    ${photoHtml}
-                    <td width="400" style="width: 400px; vertical-align: top;">
+                    ${logoHtml}
+                    <td width="350" style="width: 350px; vertical-align: top;">
                         <div style="font-size: 18px; font-weight: bold; color: ${companyData.colors.primary}; margin-bottom: 4px;">
                             ${data.fullName}
                         </div>
@@ -106,10 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${contactRow(icons.contact.web, companyData.website, companyData.websiteUrl)}
                             ${contactRow(icons.contact.address, companyData.address, companyData.mapUrl)}
                         </table>
-
-                        <div style="margin-bottom: 15px;">
-                            <img src="${companyData.logoUrl}" alt="The Work Justice Firm" width="400" style="display: block; width: 50%; max-width: 50%; height: auto;">
-                        </div>
 
                         <div style="margin-bottom: 5px;">
                             <a href="${companyData.social.linkedin}" style="text-decoration: none; margin-right: 5px;">
@@ -128,9 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="${data.photoUrl ? 2 : 1}" style="padding-top: 0px;">
+                    <td colspan="2" style="padding-top: 0px;">
                         <p style="font-size: 10px; color: #999; line-height: 1.2; margin: 0; border-top: 1px solid #eee; padding-top: 10px;">
-                            CONFIDENTIALITY NOTICE: This message is intended only for the named recipient and may contain confidential or privileged information.  It is protected by the Electronic Communications Privacy Act, 18 USC Sections 2150-21 and is legally privileged.  If you are not the named recipient, please delete this message and contact the sender at (323) 675-3337 or by reply email indicating that you received it in error.
+                            CONFIDENTIALITY NOTICE: This e-mail may contain or attach privileged, confidential or protected information intended only for the use of the intended recipient. If you are not the intended recipient, any review or use of it is strictly prohibited. If you have received this e-mail in error, you are required to notify the sender, then delete this email and any attachment from your computer and any of your electronic devices where the message is stored.
                         </p>
                     </td>
                 </tr>
