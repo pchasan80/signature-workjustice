@@ -1,0 +1,29 @@
+Let's develop an HTML email signature specifically optimized for Gmail for The Work Justice Firm.
+
+Their website: https://www.workjustice.com/
+
+Project Concept:
+
+We will create a web-based HTML signature generator. Users will fill out a form with their personal details — including name, job title, contact information, and a professional photo. After submitting the form, the system will generate a fully formatted HTML email signature. Users will then be able to copy the generated HTML and paste it directly into their Gmail signature settings.
+
+Signature Layout & Design Requirements:
+
+The email signature should use a two-column layout.
+
+Signature width will be total 600px. The left column will be 200px and right column will be 400px.
+
+Left Column:
+
+A tall professional headshot of the user (portrait orientation for a clean, premium look).
+
+Right Column:
+
+User’s full name
+
+Job title
+
+A neatly organized list of contact details with icons (email, phone, address, website, fax)
+
+The Work Justice Firm logo
+
+Social media icons/links
