@@ -65,6 +65,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const logoHtml = `
             <td width="250" style="width: 250px; vertical-align: top; padding-right: 20px;">
                 <img src="${companyData.logoUrl}" alt="${companyData.name}" width="250" style="width: 100%; height: auto; border: 0;">
+                <div style="margin-top: 15px; text-align: center;">
+                    <a href="${companyData.social.linkedin}" style="text-decoration: none; margin-right: 5px;">
+                        <img src="${icons.social.linkedin}" alt="LinkedIn" width="20" height="20" style="display: inline-block;">
+                    </a>
+                    <a href="${companyData.social.facebook}" style="text-decoration: none; margin-right: 5px;">
+                        <img src="${icons.social.facebook}" alt="Facebook" width="20" height="20" style="display: inline-block;">
+                    </a>
+                    <a href="${companyData.social.instagram}" style="text-decoration: none; margin-right: 5px;">
+                        <img src="${icons.social.instagram}" alt="Instagram" width="20" height="20" style="display: inline-block;">
+                    </a>
+                    <a href="${companyData.social.google}" style="text-decoration: none;">
+                        <img src="${icons.social.google}" alt="Google Business" width="20" height="20" style="display: inline-block;">
+                    </a>
+                </div>
             </td>
         `;
 
@@ -101,21 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${contactRow(icons.contact.web, companyData.website, companyData.websiteUrl)}
                             ${contactRow(icons.contact.address, companyData.address, companyData.mapUrl)}
                         </table>
-
-                        <div style="margin-bottom: 5px;">
-                            <a href="${companyData.social.linkedin}" style="text-decoration: none; margin-right: 5px;">
-                                <img src="${icons.social.linkedin}" alt="LinkedIn" width="20" height="20" style="display: inline-block;">
-                            </a>
-                            <a href="${companyData.social.facebook}" style="text-decoration: none; margin-right: 5px;">
-                                <img src="${icons.social.facebook}" alt="Facebook" width="20" height="20" style="display: inline-block;">
-                            </a>
-                            <a href="${companyData.social.instagram}" style="text-decoration: none; margin-right: 5px;">
-                                <img src="${icons.social.instagram}" alt="Instagram" width="20" height="20" style="display: inline-block;">
-                            </a>
-                            <a href="${companyData.social.google}" style="text-decoration: none;">
-                                <img src="${icons.social.google}" alt="Google Business" width="20" height="20" style="display: inline-block;">
-                            </a>
-                        </div>
                     </td>
                 </tr>
                 <tr>
