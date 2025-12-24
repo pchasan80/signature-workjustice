@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyBtn = document.getElementById('copyBtn');
     const copyStatus = document.getElementById('copyStatus');
 
+    const escapeHtml = (value) => {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    };
+
+    const normalizeEmail = (value) => String(value).trim();
+    const normalizePhoneDigits = (value) => String(value).replace(/[^0-9+]/g, '');
+
     // Input elements
     const inputs = {
         fullName: document.getElementById('fullName'),
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function generateSignature() {
-        const data = {
+        const raw = {
             fullName: inputs.fullName.value || "Brent Marlis",
             jobTitle: inputs.jobTitle.value || "Partner, President",
             email: inputs.email.value || "brent@workjustice.com",
@@ -62,20 +74,31 @@ document.addEventListener('DOMContentLoaded', function() {
             fax: inputs.fax.value || ""
         };
 
+        const emailNormalized = normalizeEmail(raw.email);
+        const phoneDigits = normalizePhoneDigits(raw.phone);
+
+        const safe = {
+            fullName: escapeHtml(raw.fullName),
+            jobTitle: escapeHtml(raw.jobTitle),
+            email: escapeHtml(emailNormalized),
+            phone: escapeHtml(raw.phone),
+            fax: escapeHtml(raw.fax)
+        };
+
         const logoHtml = `
-            <td width="250" style="width: 250px; vertical-align: top; padding-right: 20px;">
-                <img src="${companyData.logoUrl}" alt="${companyData.name}" width="250" style="width: 100%; height: auto; border: 0;">
+            <td width="42%" style="width: 42%; vertical-align: top; padding-right: 20px; max-width: 250px;">
+                <img src="${companyData.logoUrl}" alt="${companyData.name}" width="250" style="max-width: 250px; width: 100%; height: auto; border: 0; display: block;">
                 <div style="margin-top: 15px; text-align: center;">
-                    <a href="${companyData.social.linkedin}" style="text-decoration: none; margin-right: 5px;">
+                    <a href="${companyData.social.linkedin}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; margin-right: 5px;">
                         <img src="${icons.social.linkedin}" alt="LinkedIn" width="20" height="20" style="display: inline-block;">
                     </a>
-                    <a href="${companyData.social.facebook}" style="text-decoration: none; margin-right: 5px;">
+                    <a href="${companyData.social.facebook}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; margin-right: 5px;">
                         <img src="${icons.social.facebook}" alt="Facebook" width="20" height="20" style="display: inline-block;">
                     </a>
-                    <a href="${companyData.social.instagram}" style="text-decoration: none; margin-right: 5px;">
+                    <a href="${companyData.social.instagram}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; margin-right: 5px;">
                         <img src="${icons.social.instagram}" alt="Instagram" width="20" height="20" style="display: inline-block;">
                     </a>
-                    <a href="${companyData.social.google}" style="text-decoration: none;">
+                    <a href="${companyData.social.google}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
                         <img src="${icons.social.google}" alt="Google Business" width="20" height="20" style="display: inline-block;">
                     </a>
                 </div>
@@ -83,35 +106,40 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
 
         // Helper for contact rows
-        const contactRow = (icon, text, href) => `
+        const contactRow = (icon, text, href) => {
+            const isWebLink = typeof href === 'string' && /^https?:/i.test(href);
+            const linkAttrs = isWebLink ? ' target="_blank" rel="noopener noreferrer"' : '';
+
+            return `
             <tr>
                 <td style="width: 20px; vertical-align: middle; padding-bottom: 5px;">
                     <img src="${icon}" width="14" height="14" style="display: block;">
                 </td>
-                <td style="vertical-align: middle; padding-bottom: 5px; padding-left: 8px;">
-                    ${href ? `<a href="${href}" style="color: ${companyData.colors.text}; text-decoration: none;">${text}</a>` : `<span style="color: ${companyData.colors.text};">${text}</span>`}
+                <td style="vertical-align: middle; padding-bottom: 5px; padding-left: 8px; min-width: 0; word-break: break-word;">
+                    ${href ? `<a href="${href}"${linkAttrs} style="color: ${companyData.colors.text}; text-decoration: none;">${text}</a>` : `<span style="color: ${companyData.colors.text};">${text}</span>`}
                 </td>
             </tr>
         `;
+        };
 
         const signatureHtml = `
-            <table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px; font-family: 'Montserrat', Arial, sans-serif; font-size: 14px; line-height: 1.4; color: ${companyData.colors.text};">
+            <table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 600px; font-family: 'Montserrat', Arial, sans-serif; font-size: 14px; line-height: 1.4; color: ${companyData.colors.text}; border-collapse: collapse;">
                 <tr>
                     ${logoHtml}
-                    <td width="350" style="width: 350px; vertical-align: top;">
+                    <td width="58%" style="width: 58%; vertical-align: top; min-width: 0;">
                         <div style="font-size: 18px; font-weight: bold; color: ${companyData.colors.primary}; margin-bottom: 4px;">
-                            ${data.fullName}
+                            ${safe.fullName}
                         </div>
                         <div style="font-size: 14px; color: ${companyData.colors.grey}; font-style: italic; margin-bottom: 10px;">
-                            ${data.jobTitle}
+                            ${safe.jobTitle}
                         </div>
                         
                         <div style="border-top: 2px solid ${companyData.colors.accent}; width: 50px; margin-bottom: 15px;"></div>
 
-                        <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; margin-bottom: 15px;">
-                            ${contactRow(icons.contact.phone, data.phone, `tel:${data.phone.replace(/[^0-9+]/g, '')}`)}
-                            ${data.fax ? contactRow(icons.contact.fax, data.fax, null) : ''}
-                            ${contactRow(icons.contact.email, data.email, `mailto:${data.email}`)}
+                        <table cellpadding="0" cellspacing="0" border="0" style="font-size: 13px; margin-bottom: 15px; width: 100%;">
+                            ${contactRow(icons.contact.phone, safe.phone, `tel:${encodeURIComponent(phoneDigits)}`)}
+                            ${raw.fax ? contactRow(icons.contact.fax, safe.fax, null) : ''}
+                            ${contactRow(icons.contact.email, safe.email, `mailto:${encodeURIComponent(emailNormalized)}`)}
                             ${contactRow(icons.contact.web, companyData.website, companyData.websiteUrl)}
                             ${contactRow(icons.contact.address, companyData.address, companyData.mapUrl)}
                         </table>
@@ -144,18 +172,31 @@ document.addEventListener('DOMContentLoaded', function() {
         input.addEventListener('input', generateSignature);
     });
 
-    copyBtn.addEventListener('click', function() {
-        // Select the signature content
-        const range = document.createRange();
-        range.selectNode(previewBox);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
+    copyBtn.addEventListener('click', async function() {
+        const signatureHtml = previewBox.innerHTML;
+        const signatureText = previewBox.textContent || '';
 
         try {
-            // Execute copy command
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-            
+            if (navigator.clipboard && window.ClipboardItem) {
+                const item = new ClipboardItem({
+                    'text/html': new Blob([signatureHtml], { type: 'text/html' }),
+                    'text/plain': new Blob([signatureText], { type: 'text/plain' })
+                });
+                await navigator.clipboard.write([item]);
+            } else {
+                const range = document.createRange();
+                range.selectNodeContents(previewBox);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                const ok = document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                if (!ok) {
+                    throw new Error('document.execCommand(\'copy\') returned false');
+                }
+            }
+
+            copyStatus.style.color = "";
             copyStatus.textContent = "Signature copied to clipboard!";
             setTimeout(() => {
                 copyStatus.textContent = "";
