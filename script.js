@@ -51,17 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Icons (hosted on a reliable CDN or similar)
     const icons = {
         social: {
-            linkedin: "https://cdn-icons-png.flaticon.com/512/61/61109.png",
-            facebook: "https://cdn-icons-png.flaticon.com/512/20/20673.png",
-            instagram: "https://cdn-icons-png.flaticon.com/512/87/87390.png",
-            google: "https://cdn-icons-png.flaticon.com/512/126/126122.png"
+            linkedin: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/linkedin.png",
+            facebook: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/facebook.png",
+            instagram: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/instagram.png",
+            google: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/store.png"
         },
         contact: {
-            phone: "https://cdn-icons-png.flaticon.com/512/483/483947.png",
-            email: "https://cdn-icons-png.flaticon.com/512/542/542638.png",
-            web: "https://cdn-icons-png.flaticon.com/512/1006/1006771.png",
-            address: "https://cdn-icons-png.flaticon.com/512/535/535239.png",
-            fax: "https://cdn-icons-png.flaticon.com/512/7175/7175143.png"
+            phone: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/call.png",
+            email: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/email.png",
+            web: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/globe.png",
+            address: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/maps-and-flags.png",
+            fax: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/fax-machine.png"
         }
     };
 
