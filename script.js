@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fullName: inputs.fullName.value || "Brent Marlis",
             jobTitle: inputs.jobTitle.value || "Partner, President",
             email: inputs.email.value || "brent@workjustice.com",
-            phone: inputs.phone.value || "(323) 675-3337",
+            phone: inputs.phone.value || "(323) 775-9000",
             fax: inputs.fax.value || ""
         };
 
