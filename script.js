@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mapUrl: "https://www.google.com/maps?cid=5507243980465062835",
         website: "www.workjustice.com",
         websiteUrl: "https://www.workjustice.com/",
-        logoUrl: "https://www.workjustice.com/images/brand/logo-dark.2503030826194.png",
+        logoUrl: "https://signature-workjustice.mylogosignature.com/icons/logo-dark.png",
         colors: {
             primary: "#002341", // Navy
             accent: "#dbb887",  // Gold
@@ -51,17 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Icons (hosted on a reliable CDN or similar)
     const icons = {
         social: {
-            linkedin: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/linkedin.png",
-            facebook: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/facebook.png",
-            instagram: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/instagram.png",
-            google: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/store.png"
+            linkedin: "https://signature-workjustice.mylogosignature.com/icons/linkedin.png",
+            facebook: "https://signature-workjustice.mylogosignature.com/icons/facebook.png",
+            instagram: "https://signature-workjustice.mylogosignature.com/icons/instagram.png",
+            google: "https://signature-workjustice.mylogosignature.com/icons/store.png"
         },
         contact: {
-            phone: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/call.png",
-            email: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/email.png",
-            web: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/globe.png",
-            address: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/maps-and-flags.png",
-            fax: "https://raw.githubusercontent.com/pchasan80/signature-workjustice/refs/heads/main/icons/fax-machine.png"
+            phone: "https://signature-workjustice.mylogosignature.com/icons/call.png",
+            email: "https://signature-workjustice.mylogosignature.com/icons/email.png",
+            web: "https://signature-workjustice.mylogosignature.com/icons/globe.png",
+            address: "https://signature-workjustice.mylogosignature.com/icons/maps-and-flags.png",
+            fax: "https://signature-workjustice.mylogosignature.com/icons/fax-machine.png"
         }
     };
 
